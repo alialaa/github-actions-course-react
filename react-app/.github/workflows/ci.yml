@@ -26,9 +26,22 @@ jobs:
       - run: npm test -- --coverage
         env:
           CI: true
+      - name: Upload Test Coverage 
+        uses: actions/upload-artifact@v1
+        with: 
+          name: code-coverage
+          path: coverage
       - name: Build Projects
       - if: github.event_name == 'push'
       - run: npm run build 
+      - name: Upload Build Folder
+      - if: github.event_name == 'push' 
+        uses: actions/upload-artifact@v1
+        with: 
+          name: build
+          path: build
+      - uses: actions/download-artifact
+
       - name: Deploy to Staging
         if: github.event_name == 'push'
         run: npx surge --project ./build --domain silent-apparatus.surge.sh
