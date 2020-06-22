@@ -10,3 +10,4 @@ jobs:
           who-to-greet: "World"
       - run: |
         echo "Time: ${{ steps.hello.outputs.time }}"
+        echo $HELLO
