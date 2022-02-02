@@ -1,11 +1,7 @@
 
 # New workflow
 name: Shell_Commands
-on: 
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+on: push
 jobs:
     run-shell-command: 
         runs-on: ubuntu-latest
